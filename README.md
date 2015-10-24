@@ -19,7 +19,7 @@ Performance
 ![Disk benchmark result](https://raw.github.com/ibireme/YYCache/master/Benchmark/Result_disk.png
 )
 
-You may [download](http://www.sqlite.org/download.html) and compile the lastest version of sqlite and ignore the libsqlite3.dylib in iOS system to get 1.5~3x speed up.
+You may [download](http://www.sqlite.org/download.html) and compile the lastest version of sqlite and ignore the libsqlite3.dylib in iOS system to get higher performance.
 
 See `Benchmark/CacheBenchmark.xcodeproj` for more benchmark case.
 
