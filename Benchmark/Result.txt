@@ -1,0 +1,297 @@
+iPhone 6 64G
+
+
+200000 item in 103 ms
+1000 / 103 * 20000
+
+
+===========================
+Memory cache set 200000 key-value pairs
+NSDictionary:     103.59
+NSDict+Lock:      126.79
+YYMemoryCache:    282.61
+PINMemoryCache:   434.40
+NSCache:          642.02
+TMMemoryCache:  48418.95
+
+===========================
+Memory cache set 200000 key-value pairs without resize
+NSDictionary:      76.55
+NSDict+Lock:       96.27
+YYMemoryCache:    288.22
+PINMemoryCache:   327.28
+NSCache:          406.55
+TMMemoryCache:  120786.68
+
+===========================
+Memory cache get 200000 key-value pairs
+NSDictionary:      72.75
+NSDict+Lock:       79.67
+YYMemoryCache:    136.06
+PINMemoryCache:   268.18
+NSCache:          173.11
+TMMemoryCache:  226113.28
+
+===========================
+Memory cache get 100000 key-value pairs randomly
+NSDictionary:      83.09
+NSDict+Lock:       91.63
+YYMemoryCache:    171.24
+PINMemoryCache:   316.13
+NSCache:          249.20
+TMMemoryCache:  133216.34
+
+===========================
+Memory cache get 200000 key-value pairs none exist
+NSDictionary:      69.78
+NSDict+Lock:       77.65
+YYMemoryCache:    132.74
+PINMemoryCache:   249.25
+NSCache:          167.44
+TMMemoryCache:  132876.79
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+///////// sqlite3.dylib (iOS 9.0.2 with SQLite 3.8.10.2) ////////////////////////////////////////////////////////////////////////
+
+
+
+write
+
+===========================
+Disk cache set 1000 key-value pairs (value is NSNumber)
+YYKVFile:      8924.52
+YYKVSQLite:     492.65
+YYDiskCache:    448.79
+PINDiskCache:  7707.43
+TMDiskCache:   7537.95
+
+===========================
+Disk cache set 1000 key-value pairs (value is NSData(100KB))
+YYKVFile:      9313.82
+YYKVSQLite:    6231.08
+YYDiskCache:  10539.94
+PINDiskCache:  7869.28
+TMDiskCache:   7707.65
+
+
+
+replace
+
+===========================
+Disk cache set 1000 key-value pairs (value is NSNumber)
+YYKVFile:      8343.03
+YYKVSQLite:     821.53
+YYDiskCache:   1377.89
+PINDiskCache:  7855.98
+TMDiskCache:   7845.19
+
+===========================
+Disk cache set 1000 key-value pairs (value is NSData(100KB))
+YYKVFile:      7273.65
+YYKVSQLite:    8269.29
+YYDiskCache:   6915.04
+PINDiskCache:  8017.28
+TMDiskCache:   7825.24
+
+
+
+
+
+read
+
+===========================
+Disk cache get 1000 key-value pairs randomly (value is NSNumber)
+YYKVFile:      3457.71
+YYKVSQLite:     819.16
+YYDiskCache:    685.47
+PINDiskCache:  3537.93
+TMDiskCache:   2497.36
+
+===========================
+Disk cache get 1000 key-value pairs randomly (value is NSData(100KB))
+YYKVFile:      4082.34
+YYKVSQLite:   13413.11
+YYDiskCache:   4221.09
+PINDiskCache:  4103.34
+TMDiskCache:   4425.64
+
+
+
+read again (with file-in-memory cache)
+
+===========================
+Disk cache get 1000 key-value pairs randomly (value is NSNumber)
+YYKVFile:      5179.29
+YYKVSQLite:     600.79
+YYDiskCache:    688.01
+PINDiskCache:  2336.50
+TMDiskCache:   2513.61
+
+===========================
+Disk cache get 1000 key-value pairs randomly (value is NSData(100KB))
+YYKVFile:      4071.25
+YYKVSQLite:   11277.24
+YYDiskCache:   5622.77
+PINDiskCache:  4279.13
+TMDiskCache:   4331.23
+
+
+
+read none exist
+
+===========================
+Disk cache get 1000 key-value pairs none exist
+YYKVFile:        16.63
+YYKVSQLite:      17.53
+YYDiskCache:     17.61
+PINDiskCache:    64.95
+TMDiskCache:    194.90
+
+===========================
+Disk cache get 1000 key-value pairs none exist
+YYKVFile:        14.45
+YYKVSQLite:      18.81
+YYDiskCache:     17.58
+PINDiskCache:    66.44
+TMDiskCache:    196.30
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+///////// SQLite download from www.sqlite.org (iOS 9.0.2 with SQLite 3.9.1) ////////////////////////////////////////////////////////////////////////
+
+
+
+write
+
+===========================
+Disk cache set 1000 key-value pairs (value is NSNumber)
+YYKVFile:      8561.47
+YYKVSQLite:     159.68
+YYDiskCache:    174.67
+PINDiskCache:  7662.53
+TMDiskCache:   7578.53
+
+===========================
+Disk cache set 1000 key-value pairs (value is NSData(100KB))
+YYKVFile:      9103.42
+YYKVSQLite:    8427.90
+YYDiskCache:   9168.39
+PINDiskCache:  7884.27
+TMDiskCache:   7692.10
+
+
+
+replace
+
+===========================
+Disk cache set 1000 key-value pairs (value is NSNumber)
+YYKVFile:      5309.11
+YYKVSQLite:     252.62
+YYDiskCache:    501.28
+PINDiskCache:  8489.18
+TMDiskCache:   7741.30
+
+===========================
+Disk cache set 1000 key-value pairs (value is NSData(100KB))
+YYKVFile:      6216.99
+YYKVSQLite:    5356.37
+YYDiskCache:   6592.80
+PINDiskCache:  8039.93
+TMDiskCache:   7834.50
+
+
+
+
+
+
+
+read
+
+===========================
+Disk cache get 1000 key-value pairs randomly (value is NSNumber)
+YYKVFile:      2244.99
+YYKVSQLite:     258.65
+YYDiskCache:    225.87
+PINDiskCache:  2427.45
+TMDiskCache:   2828.23
+
+===========================
+Disk cache get 1000 key-value pairs randomly (value is NSData(100KB))
+YYKVFile:      2983.38
+YYKVSQLite:   14725.93
+YYDiskCache:   3260.34
+PINDiskCache:  4300.85
+TMDiskCache:   4437.85
+
+
+
+read again (with file-in-memory cache)
+
+===========================
+Disk cache get 1000 key-value pairs randomly (value is NSNumber)
+YYKVFile:      3560.50
+YYKVSQLite:     739.11
+YYDiskCache:    324.97
+PINDiskCache:  2396.57
+TMDiskCache:   2554.92
+
+===========================
+Disk cache get 1000 key-value pairs randomly (value is NSData(100KB))
+YYKVFile:      3051.79
+YYKVSQLite:   13604.69
+YYDiskCache:   2857.67
+PINDiskCache:  4365.52
+TMDiskCache:   4373.01
+
+
+read none exist
+
+===========================
+Disk cache get 1000 key-value pairs none exist
+YYKVFile:        16.71
+YYKVSQLite:      16.21
+YYDiskCache:     19.27
+PINDiskCache:    66.73
+TMDiskCache:    199.49
+
+===========================
+Disk cache get 1000 key-value pairs none exist
+YYKVFile:        15.44
+YYKVSQLite:      18.64
+YYDiskCache:     16.90
+PINDiskCache:    70.25
+TMDiskCache:    198.95
+
