@@ -57,7 +57,7 @@ Installation
 
 ### Manually
 
-1. Download all the files in the YYModel subdirectory.
+1. Download all the files in the YYCache subdirectory.
 2. Add the source files to your Xcode project.
 3. Link with required frameworks:
 	* UIKit.framework
