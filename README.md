@@ -75,3 +75,9 @@ This library supports iOS 6.0 and later.
 License
 ==============
 YYCache is provided under the MIT license. See LICENSE file for details.
+
+
+中文链接
+==============
+[中文介绍和性能评测](http://blog.ibireme.com/2015/10/26/yycache/)
+
