@@ -7,8 +7,8 @@ YYCache <a href="#中文介绍">中文介绍</a>
 [![Cocoapods](http://img.shields.io/cocoapods/p/YYCache.svg?style=flat)](http://cocoapods.org/?q= YYCache)&nbsp;
 [![Support](https://img.shields.io/badge/support-iOS%206%2B%20-blue.svg?style=flat)](https://www.apple.com/nl/ios/)
 
-High performance cache framework for iOS.
-
+High performance cache framework for iOS.<br/>
+(It's a component of [YYKit](https://github.com/ibireme/YYKit))
 
 Performance
 ==============
@@ -81,8 +81,8 @@ YYCache is provided under the MIT license. See LICENSE file for details.
 ---
 中文介绍
 ==============
-YYCache：高性能 iOS 缓存框架。
-
+高性能 iOS 缓存框架。<br/>
+(该项目是 [YYKit](https://github.com/ibireme/YYKit) 组件之一)
 
 性能
 ==============
