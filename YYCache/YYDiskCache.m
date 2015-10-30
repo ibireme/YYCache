@@ -150,7 +150,7 @@ static NSString *_YYNSStringMD5(NSString *string) {
     _kv = kv;
     _path = path;
     _lock = dispatch_semaphore_create(1);
-    _queue = dispatch_queue_create("com.ibireme.YYCache.cache.disk", DISPATCH_QUEUE_CONCURRENT);
+    _queue = dispatch_queue_create("com.ibireme.cache.disk", DISPATCH_QUEUE_CONCURRENT);
     _inlineThreshold = threshold;
     _countLimit = NSUIntegerMax;
     _costLimit = NSUIntegerMax;

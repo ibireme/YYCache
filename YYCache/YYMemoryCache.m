@@ -335,7 +335,7 @@ static inline dispatch_queue_t YYMemoryCacheGetReleaseQueue() {
     self = super.init;
     _lock = OS_SPINLOCK_INIT;
     _lru = [_YYLinkedMap new];
-    _queue = dispatch_queue_create("com.ibireme.YYCache.cache.memory", DISPATCH_QUEUE_SERIAL);
+    _queue = dispatch_queue_create("com.ibireme.cache.memory", DISPATCH_QUEUE_SERIAL);
     
     _countLimit = NSUIntegerMax;
     _costLimit = NSUIntegerMax;
