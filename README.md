@@ -5,7 +5,8 @@ YYCache <a href="#中文介绍">中文介绍</a>
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)&nbsp;
 [![Cocoapods](http://img.shields.io/cocoapods/v/YYCache.svg?style=flat)](http://cocoapods.org/?q= YYCache)&nbsp;
 [![Cocoapods](http://img.shields.io/cocoapods/p/YYCache.svg?style=flat)](http://cocoapods.org/?q= YYCache)&nbsp;
-[![Support](https://img.shields.io/badge/support-iOS%206%2B%20-blue.svg?style=flat)](https://www.apple.com/nl/ios/)
+[![Support](https://img.shields.io/badge/support-iOS%206%2B%20-blue.svg?style=flat)](https://www.apple.com/nl/ios/)&nbsp;
+[![Build Status](https://travis-ci.org/ibireme/YYCache.svg?branch=master)](https://travis-ci.org/ibireme/YYCache)
 
 High performance cache framework for iOS.<br/>
 (It's a component of [YYKit](https://github.com/ibireme/YYKit))
