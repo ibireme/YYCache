@@ -68,9 +68,15 @@ Installation
 4. Import `YYCache.h`.
 
 
-About
+Documentation
 ==============
-This library supports iOS 6.0 and later.
+Full API documentation is available on [CocoaDocs](http://cocoadocs.org/docsets/YYCache/).<br/>
+You can also install documentation locally using [appledoc](https://github.com/tomaz/appledoc).
+
+
+Requirements
+==============
+This library requires a deployment target of iOS 6.0 or greater.
 
 
 License
@@ -143,7 +149,12 @@ iPhone 6 上，磁盘缓存每秒响应次数 (越高越好):
 4. 导入 `YYCache.h`。
 
 
-关于
+文档
+==============
+你可以在 [CocoaDocs](http://cocoadocs.org/docsets/YYCache/) 查看在线 API 文档，也可以用 [appledoc](https://github.com/tomaz/appledoc) 本地生成文档。
+
+
+系统要求
 ==============
 该项目最低支持 iOS 6.0。
 
