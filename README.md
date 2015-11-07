@@ -61,9 +61,9 @@ Installation
 1. Download all the files in the YYCache subdirectory.
 2. Add the source files to your Xcode project.
 3. Link with required frameworks:
-	* UIKit.framework
-	* CoreFoundation.framework
-	* QuartzCore.framework
+	* UIKit
+	* CoreFoundation
+	* QuartzCore
 	* sqlite3
 4. Import `YYCache.h`.
 
@@ -142,9 +142,9 @@ iPhone 6 上，磁盘缓存每秒响应次数 (越高越好):
 1. 下载 YYCache 文件夹内的所有内容。
 2. 将 YYCache 内的源文件添加(拖放)到你的工程。
 3. 链接以下的 frameworks:
-	* UIKit.framework
-	* CoreFoundation.framework
-	* QuartzCore.framework
+	* UIKit
+	* CoreFoundation
+	* QuartzCore
 	* sqlite3
 4. 导入 `YYCache.h`。
 
