@@ -3,8 +3,8 @@ YYCache <a href="#中文介绍">中文介绍</a>
 
 [![License MIT](https://img.shields.io/badge/license-MIT-green.svg?style=flat)](https://raw.githubusercontent.com/ibireme/YYCache/master/LICENSE)&nbsp;
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)&nbsp;
-[![Cocoapods](http://img.shields.io/cocoapods/v/YYCache.svg?style=flat)](http://cocoapods.org/?q= YYCache)&nbsp;
-[![Cocoapods](http://img.shields.io/cocoapods/p/YYCache.svg?style=flat)](http://cocoapods.org/?q= YYCache)&nbsp;
+[![CocoaPods](http://img.shields.io/cocoapods/v/YYCache.svg?style=flat)](http://cocoapods.org/?q= YYCache)&nbsp;
+[![CocoaPods](http://img.shields.io/cocoapods/p/YYCache.svg?style=flat)](http://cocoapods.org/?q= YYCache)&nbsp;
 [![Support](https://img.shields.io/badge/support-iOS%206%2B%20-blue.svg?style=flat)](https://www.apple.com/nl/ios/)&nbsp;
 [![Build Status](https://travis-ci.org/ibireme/YYCache.svg?branch=master)](https://travis-ci.org/ibireme/YYCache)
 
@@ -42,7 +42,7 @@ Features
 Installation
 ==============
 
-### Cocoapods
+### CocoaPods
 
 1. Add `pod "YYCache"` to your Podfile.
 2. Run `pod install` or `pod update`.
@@ -123,7 +123,7 @@ iPhone 6 上，磁盘缓存每秒响应次数 (越高越好):
 安装
 ==============
 
-### Cocoapods
+### CocoaPods
 
 1. 在 Podfile 中添加 `pod "YYCache"`。
 2. 执行 `pod install` 或 `pod update`。
