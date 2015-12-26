@@ -336,6 +336,31 @@ static void _YYDiskCacheSetGlobal(YYDiskCache *cache) {
     });
 }
 
+- (void)filePathForkey:(NSString *)key withBlock:(void (^)(NSString *, NSString *))block
+{
+    if (!block) return;
+    __weak typeof(self) _self = self;
+    dispatch_async(_queue, ^{
+        __strong typeof(_self) self = _self;
+        NSString  *filepath = [self filePathForkey:key];
+        block(key, filepath);
+    });
+    return;
+}
+
+- (NSString *)filePathForkey:(NSString *)key
+{
+    if (!key) return nil;
+    Lock();
+    YYKVStorageItem *item = [_kv getItemInfoForKey:key];
+    Unlock();
+    NSString *filePath = nil;
+    if (item.filename) {
+        filePath = [[self.path stringByAppendingPathComponent:@"data"] stringByAppendingPathComponent:item.filename];
+    }
+    return filePath;
+}
+
 - (NSInteger)totalCount {
     Lock();
     int count = [_kv getItemsCount];
