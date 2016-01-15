@@ -12,6 +12,10 @@
 #import <Foundation/Foundation.h>
 
 /**
+ @warning OSSpinLock is not safe anymore...
+ */
+
+/**
  A simple implementation of thread safe mutable dictionary.
  
  @discussion Generally, access performance is lower than NSMutableDictionary,
