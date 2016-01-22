@@ -1,4 +1,4 @@
-YYCache <a href="#中文介绍">中文介绍</a>
+YYCache
 ==============
 
 [![License MIT](https://img.shields.io/badge/license-MIT-green.svg?style=flat)](https://raw.githubusercontent.com/ibireme/YYCache/master/LICENSE)&nbsp;
@@ -167,3 +167,5 @@ YYCache 使用 MIT 许可证，详情见 LICENSE 文件。
 相关链接
 ==============
 [YYCache 设计思路与技术细节](http://blog.ibireme.com/2015/10/26/yycache/)
+
+
