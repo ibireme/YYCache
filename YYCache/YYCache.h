@@ -68,6 +68,9 @@ FOUNDATION_EXPORT const unsigned char YYCacheVersionString[];
  */
 - (instancetype)initWithPath:(NSString *)path NS_DESIGNATED_INITIALIZER;
 
++ (instancetype)cacheWithName:(NSString *)name;
++ (instancetype)cacheWithPath:(NSString *)path;
+
 - (instancetype)init UNAVAILABLE_ATTRIBUTE;
 + (instancetype)new UNAVAILABLE_ATTRIBUTE;
 
