@@ -44,7 +44,7 @@ Installation
 
 ### CocoaPods
 
-1. Add `pod "YYCache"` to your Podfile.
+1. Add `pod 'YYCache'` to your Podfile.
 2. Run `pod install` or `pod update`.
 3. Import \<YYCache/YYCache.h\>.
 
@@ -76,7 +76,7 @@ You can also install documentation locally using [appledoc](https://github.com/t
 
 Requirements
 ==============
-This library requires a deployment target of iOS 6.0 or greater.
+This library requires `iOS 6.0+` and `Xcode 7.0+`.
 
 
 License
@@ -125,7 +125,7 @@ iPhone 6 上，磁盘缓存每秒响应次数 (越高越好):
 
 ### CocoaPods
 
-1. 在 Podfile 中添加 `pod "YYCache"`。
+1. 在 Podfile 中添加 `pod 'YYCache'`。
 2. 执行 `pod install` 或 `pod update`。
 3. 导入 \<YYCache/YYCache.h\>。
 
@@ -156,7 +156,7 @@ iPhone 6 上，磁盘缓存每秒响应次数 (越高越好):
 
 系统要求
 ==============
-该项目最低支持 iOS 6.0。
+该项目最低支持 `iOS 6.0` 和 `Xcode 7.0`。
 
 
 许可证
