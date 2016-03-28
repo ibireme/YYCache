@@ -362,9 +362,9 @@ static inline dispatch_queue_t YYMemoryCacheGetReleaseQueue() {
 
 - (BOOL)releaseOnMainThread {
     pthread_mutex_lock(&_lock);
-    BOOL releaseInMainThread = _lru->_releaseOnMainThread;
+    BOOL releaseOnMainThread = _lru->_releaseOnMainThread;
     pthread_mutex_unlock(&_lock);
-    return releaseInMainThread;
+    return releaseOnMainThread;
 }
 
 - (void)setReleaseOnMainThread:(BOOL)releaseOnMainThread {
