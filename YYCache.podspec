@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
   s.name         = 'YYCache'
   s.summary      = 'High performance cache framework for iOS.'
-  s.version      = '1.0.2'
+  s.version      = '1.0.3'
   s.license      = { :type => 'MIT', :file => 'LICENSE' }
   s.authors      = { 'ibireme' => 'ibireme@gmail.com' }
   s.social_media_url = 'http://blog.ibireme.com'
