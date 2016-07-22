@@ -66,7 +66,7 @@
     }
 }
 
-- (id<NSCoding>)objectForKey:(NSString *)key {
+- (id)objectForKey:(NSString *)key {
     id<NSCoding> object = [_memoryCache objectForKey:key];
     if (!object) {
         object = [_diskCache objectForKey:key];
@@ -77,7 +77,7 @@
     return object;
 }
 
-- (void)objectForKey:(NSString *)key withBlock:(void (^)(NSString *key, id<NSCoding> object))block {
+- (void)objectForKey:(NSString *)key withBlock:(void (^)(NSString *key, id object))block {
     if (!block) return;
     id<NSCoding> object = [_memoryCache objectForKey:key];
     if (object) {
