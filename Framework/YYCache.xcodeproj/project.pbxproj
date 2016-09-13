@@ -8,13 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		D9D4190B1BD0F04000CD8EBF /* YYCache.h in Headers */ = {isa = PBXBuildFile; fileRef = D9D419031BD0F04000CD8EBF /* YYCache.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D9D4190C1BD0F04000CD8EBF /* YYCache.m in Sources */ = {isa = PBXBuildFile; fileRef = D9D419041BD0F04000CD8EBF /* YYCache.m */; settings = {ASSET_TAGS = (); }; };
+		D9D4190C1BD0F04000CD8EBF /* YYCache.m in Sources */ = {isa = PBXBuildFile; fileRef = D9D419041BD0F04000CD8EBF /* YYCache.m */; };
 		D9D4190D1BD0F04000CD8EBF /* YYDiskCache.h in Headers */ = {isa = PBXBuildFile; fileRef = D9D419051BD0F04000CD8EBF /* YYDiskCache.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D9D4190E1BD0F04000CD8EBF /* YYDiskCache.m in Sources */ = {isa = PBXBuildFile; fileRef = D9D419061BD0F04000CD8EBF /* YYDiskCache.m */; settings = {ASSET_TAGS = (); }; };
+		D9D4190E1BD0F04000CD8EBF /* YYDiskCache.m in Sources */ = {isa = PBXBuildFile; fileRef = D9D419061BD0F04000CD8EBF /* YYDiskCache.m */; };
 		D9D4190F1BD0F04000CD8EBF /* YYKVStorage.h in Headers */ = {isa = PBXBuildFile; fileRef = D9D419071BD0F04000CD8EBF /* YYKVStorage.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D9D419101BD0F04000CD8EBF /* YYKVStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = D9D419081BD0F04000CD8EBF /* YYKVStorage.m */; settings = {ASSET_TAGS = (); }; };
+		D9D419101BD0F04000CD8EBF /* YYKVStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = D9D419081BD0F04000CD8EBF /* YYKVStorage.m */; };
 		D9D419111BD0F04000CD8EBF /* YYMemoryCache.h in Headers */ = {isa = PBXBuildFile; fileRef = D9D419091BD0F04000CD8EBF /* YYMemoryCache.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D9D419121BD0F04000CD8EBF /* YYMemoryCache.m in Sources */ = {isa = PBXBuildFile; fileRef = D9D4190A1BD0F04000CD8EBF /* YYMemoryCache.m */; settings = {ASSET_TAGS = (); }; };
+		D9D419121BD0F04000CD8EBF /* YYMemoryCache.m in Sources */ = {isa = PBXBuildFile; fileRef = D9D4190A1BD0F04000CD8EBF /* YYMemoryCache.m */; };
 		D9D419151BD0F07100CD8EBF /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9D419141BD0F07100CD8EBF /* UIKit.framework */; };
 		D9D419171BD0F07600CD8EBF /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9D419161BD0F07600CD8EBF /* CoreFoundation.framework */; };
 		D9D419191BD0F07E00CD8EBF /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = D9D419181BD0F07E00CD8EBF /* libsqlite3.tbd */; };
@@ -139,7 +139,7 @@
 		D9D418EC1BD0EFE300CD8EBF /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0700;
+				LastUpgradeCheck = 0800;
 				ORGANIZATIONNAME = ibireme;
 				TargetAttributes = {
 					D9D418F41BD0EFE300CD8EBF = {
@@ -202,8 +202,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -226,7 +228,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -249,8 +251,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -267,7 +271,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -280,6 +284,7 @@
 		D9D418FE1BD0EFE300CD8EBF /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -297,6 +302,7 @@
 		D9D418FF1BD0EFE300CD8EBF /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
