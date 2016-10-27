@@ -209,7 +209,7 @@ NS_ASSUME_NONNULL_BEGIN
  @param key A string identifying the value. If nil, just return nil.
  @return The value associated with key, or nil if no value is associated with key.
  */
-- (nullable id<NSCoding>)objectForKey:(NSString *)key;
+- (nullable id)objectForKey:(NSString *)key;
 
 /**
  Returns the value associated with a given key.
@@ -219,7 +219,7 @@ NS_ASSUME_NONNULL_BEGIN
  @param key A string identifying the value. If nil, just return nil.
  @param block A block which will be invoked in background queue when finished.
  */
-- (void)objectForKey:(NSString *)key withBlock:(void(^)(NSString *key, id<NSCoding> _Nullable object))block;
+- (void)objectForKey:(NSString *)key withBlock:(void(^)(NSString *key, id _Nullable object))block;
 
 /**
  Sets the value of the specified key in the cache.
