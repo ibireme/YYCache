@@ -184,6 +184,29 @@ NS_ASSUME_NONNULL_BEGIN
 ///=============================================================================
 
 /**
+ Returns the filepath with a given key.
+ This method may blocks the calling thread until file read finished.
+ 
+ @param key A string identifying the value. If nil, just return nil.
+ @return The filepath with key, nil if inline.
+ */
+- (NSString *)filePathForkey:(NSString *)key;
+
+
+/**
+ Returns the filepath with a given key.
+ This method returns immediately and invoke the passed block in background queue
+ when the operation finished.
+ 
+ @param key A string identifying the value. If nil, just return nil.
+ @param block A block which will be invoked in background queue when finished.
+ */
+- (void)filePathForkey:(NSString *)key withBlock:(void(^)(NSString *key, NSString *filePath))block;
+
+
+
+
+/**
  Returns a boolean value that indicates whether a given key is in cache.
  This method may blocks the calling thread until file read finished.
  
@@ -406,6 +429,7 @@ NS_ASSUME_NONNULL_BEGIN
  @param object       The object.
  */
 + (void)setExtendedData:(nullable NSData *)extendedData toObject:(id)object;
+
 
 @end
 
