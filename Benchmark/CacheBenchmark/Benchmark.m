@@ -9,7 +9,6 @@
 #import "Benchmark.h"
 #import "YYCache.h"
 #import "PINCache.h"
-#import "TMCache.h"
 #import "YYThreadSafeDictionary.h"
 #import <QuartzCore/QuartzCore.h>
 
@@ -22,9 +21,9 @@
     
     // You should benchmark data writing first.
     // Before benchmark data reading, you should kill the app to avoid disk-in-memory cache.
-#define WRITE 1
-#define READ 1
-#define RANDOMLY 1
+#define WRITE    false
+#define READ     true
+#define RANDOMLY true
     
 #if WRITE
     
@@ -85,9 +84,7 @@
     YYThreadSafeDictionary *nsDictLock = [YYThreadSafeDictionary new];
     NSCache *ns = [NSCache new];
     PINMemoryCache *pin = [PINMemoryCache new];
-    TMMemoryCache *tm = [TMMemoryCache new];
     YYMemoryCache *yy = [YYMemoryCache new];
-    yy.releaseOnMainThread = YES;
     
     NSMutableArray *keys = [NSMutableArray new];
     NSMutableArray *values = [NSMutableArray new];
@@ -163,17 +160,6 @@
     printf("NSCache:        %8.2f\n", time * 1000);
     
     
-    begin = CACurrentMediaTime();
-    @autoreleasepool {
-        for (int i = 0; i < count / 100; i++) {
-            [tm setObject:values[i] forKey:keys[i]]; // too slow...
-        }
-    }
-    end = CACurrentMediaTime();
-    time = end - begin;
-    printf("TMMemoryCache:  %8.2f\n", time * 1000 * 100);
-    
-    
     
     
     
@@ -241,17 +227,6 @@
     printf("NSCache:        %8.2f\n", time * 1000);
     
     
-    [tm removeAllObjects];
-    begin = CACurrentMediaTime();
-    @autoreleasepool {
-        for (int i = 0; i < count / 100; i++) {
-            [tm setObject:values[i] forKey:keys[i]]; // too slow...
-        }
-    }
-    end = CACurrentMediaTime();
-    time = end - begin;
-    printf("TMMemoryCache:  %8.2f\n", time * 1000 * 100);
-    
     
     
     
@@ -314,16 +289,6 @@
     time = end - begin;
     printf("NSCache:        %8.2f\n", time * 1000);
     
-    
-    begin = CACurrentMediaTime();
-    @autoreleasepool {
-        for (int i = 0; i < count / 100; i++) {
-            [tm objectForKey:keys[i]];
-        }
-    }
-    end = CACurrentMediaTime();
-    time = end - begin;
-    printf("TMMemoryCache:  %8.2f\n", time * 1000 * 100);
     
     
     
@@ -388,17 +353,6 @@
     time = end - begin;
     printf("NSCache:        %8.2f\n", time * 1000);
     
-    
-    begin = CACurrentMediaTime();
-    @autoreleasepool {
-        for (int i = 0; i < count / 100; i++) {
-            [tm objectForKey:keys[i]];
-        }
-    }
-    end = CACurrentMediaTime();
-    time = end - begin;
-    printf("TMMemoryCache:  %8.2f\n", time * 1000 * 100);
- 
     
     
     
@@ -470,15 +424,6 @@
     printf("NSCache:        %8.2f\n", time * 1000);
     
     
-    begin = CACurrentMediaTime();
-    @autoreleasepool {
-        for (int i = 0; i < count / 100; i++) {
-            [tm objectForKey:keys[i]];
-        }
-    }
-    end = CACurrentMediaTime();
-    time = end - begin;
-    printf("TMMemoryCache:  %8.2f\n", time * 1000 * 100);
 }
 
 
@@ -503,7 +448,6 @@
     YYKVStorage *yykvSQLite = [[YYKVStorage alloc] initWithPath:[basePath stringByAppendingPathComponent:@"yykvSQLite"] type:YYKVStorageTypeSQLite];
     YYDiskCache *yy = [[YYDiskCache alloc] initWithPath:[basePath stringByAppendingPathComponent:@"yy"]];
     PINDiskCache *pin = [[PINDiskCache alloc] initWithName:@"pin" rootPath:[basePath stringByAppendingPathComponent:@"pin"]];
-    TMDiskCache *tm = [[TMDiskCache alloc] initWithName:@"tm" rootPath:[basePath stringByAppendingPathComponent:@"tm"]];
     
     int count = 1000;
     NSMutableArray *keys = [NSMutableArray new];
@@ -563,16 +507,6 @@
     time = end - begin;
     printf("PINDiskCache: %8.2f\n", time * 1000);
     
-    begin = CACurrentMediaTime();
-    @autoreleasepool {
-        for (int i = 0; i < count; i++) {
-            [tm setObject:values[i] forKey:keys[i]];
-        }
-    }
-    end = CACurrentMediaTime();
-    time = end - begin;
-    printf("TMDiskCache:  %8.2f\n", time * 1000);
-    
 }
 
 
@@ -586,7 +520,6 @@
     yy.customArchiveBlock = ^(id object) {return object;};
     yy.customUnarchiveBlock = ^(NSData *object) {return object;};
     PINDiskCache *pin = [[PINDiskCache alloc] initWithName:@"pin" rootPath:[basePath stringByAppendingPathComponent:@"pin"]];
-    TMDiskCache *tm = [[TMDiskCache alloc] initWithName:@"tm" rootPath:[basePath stringByAppendingPathComponent:@"tm"]];
     
     int count = 1000;
     NSMutableArray *keys = [NSMutableArray new];
@@ -648,16 +581,6 @@
     time = end - begin;
     printf("PINDiskCache: %8.2f\n", time * 1000);
     
-    begin = CACurrentMediaTime();
-    @autoreleasepool {
-        for (int i = 0; i < count; i++) {
-            [tm setObject:dataValue forKey:keys[i]];
-        }
-    }
-    end = CACurrentMediaTime();
-    time = end - begin;
-    printf("TMDiskCache:  %8.2f\n", time * 1000);
-    
 }
 
 
@@ -669,7 +592,6 @@
     YYKVStorage *yykvSQLite = [[YYKVStorage alloc] initWithPath:[basePath stringByAppendingPathComponent:@"yykvSQLite"] type:YYKVStorageTypeSQLite];
     YYDiskCache *yy = [[YYDiskCache alloc] initWithPath:[basePath stringByAppendingPathComponent:@"yy"]];
     PINDiskCache *pin = [[PINDiskCache alloc] initWithName:@"pin" rootPath:[basePath stringByAppendingPathComponent:@"pin"]];
-    TMDiskCache *tm = [[TMDiskCache alloc] initWithName:@"tm" rootPath:[basePath stringByAppendingPathComponent:@"tm"]];
     
     int count = 1000;
     NSMutableArray *keys = [NSMutableArray new];
@@ -737,17 +659,6 @@
     time = end - begin;
     printf("PINDiskCache: %8.2f\n", time * 1000);
     
-    begin = CACurrentMediaTime();
-    @autoreleasepool {
-        for (int i = 0; i < count; i++) {
-            NSNumber *value = (id)[tm objectForKey:keys[i]];
-            if (!value) printf("error!");
-        }
-    }
-    end = CACurrentMediaTime();
-    time = end - begin;
-    printf("TMDiskCache:  %8.2f\n", time * 1000);
-    
 }
 
 
@@ -761,8 +672,6 @@
     yy.customArchiveBlock = ^(id object) {return object;};
     yy.customUnarchiveBlock = ^(NSData *object) {return object;};
     PINDiskCache *pin = [[PINDiskCache alloc] initWithName:@"pin" rootPath:[basePath stringByAppendingPathComponent:@"pin"]];
-    TMDiskCache *tm = [[TMDiskCache alloc] initWithName:@"tm" rootPath:[basePath stringByAppendingPathComponent:@"tm"]];
-    
     
     int count = 1000;
     NSMutableArray *keys = [NSMutableArray new];
@@ -830,17 +739,6 @@
     time = end - begin;
     printf("PINDiskCache: %8.2f\n", time * 1000);
     
-    begin = CACurrentMediaTime();
-    @autoreleasepool {
-        for (int i = 0; i < count; i++) {
-            NSData *value = (id)[tm objectForKey:keys[i]];
-            if (!value) printf("error!");
-        }
-    }
-    end = CACurrentMediaTime();
-    time = end - begin;
-    printf("TMDiskCache:  %8.2f\n", time * 1000);
-    
 }
 
 
@@ -854,7 +752,6 @@
     YYKVStorage *yykvSQLite = [[YYKVStorage alloc] initWithPath:[basePath stringByAppendingPathComponent:@"yykvSQLite"] type:YYKVStorageTypeSQLite];
     YYDiskCache *yy = [[YYDiskCache alloc] initWithPath:[basePath stringByAppendingPathComponent:@"yy"]];
     PINDiskCache *pin = [[PINDiskCache alloc] initWithName:@"pin" rootPath:[basePath stringByAppendingPathComponent:@"pin"]];
-    TMDiskCache *tm = [[TMDiskCache alloc] initWithName:@"tm" rootPath:[basePath stringByAppendingPathComponent:@"tm"]];
     
     int count = 1000;
     NSMutableArray *keys = [NSMutableArray new];
@@ -915,17 +812,6 @@
     time = end - begin;
     printf("PINDiskCache: %8.2f\n", time * 1000);
     
-    begin = CACurrentMediaTime();
-    @autoreleasepool {
-        for (int i = 0; i < count; i++) {
-            NSNumber *value = (id)[tm objectForKey:keys[i]];
-            if (value) printf("error!");
-        }
-    }
-    end = CACurrentMediaTime();
-    time = end - begin;
-    printf("TMDiskCache:  %8.2f\n", time * 1000);
-    
 }
 
 
@@ -939,8 +825,6 @@
     yy.customArchiveBlock = ^(id object) {return object;};
     yy.customUnarchiveBlock = ^(NSData *object) {return object;};
     PINDiskCache *pin = [[PINDiskCache alloc] initWithName:@"pin" rootPath:[basePath stringByAppendingPathComponent:@"pin"]];
-    TMDiskCache *tm = [[TMDiskCache alloc] initWithName:@"tm" rootPath:[basePath stringByAppendingPathComponent:@"tm"]];
-    
     
     int count = 1000;
     NSMutableArray *keys = [NSMutableArray new];
@@ -1000,17 +884,6 @@
     end = CACurrentMediaTime();
     time = end - begin;
     printf("PINDiskCache: %8.2f\n", time * 1000);
-    
-    begin = CACurrentMediaTime();
-    @autoreleasepool {
-        for (int i = 0; i < count; i++) {
-            NSData *value = (id)[tm objectForKey:keys[i]];
-            if (value) printf("error!");
-        }
-    }
-    end = CACurrentMediaTime();
-    time = end - begin;
-    printf("TMDiskCache:  %8.2f\n", time * 1000);
     
 }
 

@@ -102,7 +102,7 @@ iPhone 6 上，磁盘缓存每秒响应次数 (越高越好):
 ![Disk benchmark result](https://raw.github.com/ibireme/YYCache/master/Benchmark/Result_disk.png
 )
 
-推荐到 SQLite 官网[下载](http://www.sqlite.org/download.html)和编译最新的 SQLite，以替换 iOS 自带的 libsqlite3.dylib，以获得最高 1.5～3 倍的性能提升。
+推荐到 SQLite 官网[下载](http://www.sqlite.org/download.html)和编译最新的 SQLite，替换 iOS 自带的 libsqlite3.dylib，以获得更好的性能。
 
 更多测试代码和用例见 `Benchmark/CacheBenchmark.xcodeproj`。
 
