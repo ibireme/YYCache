@@ -162,7 +162,7 @@ static UIApplication *_YYSharedApplication() {
 }
 
 - (BOOL)_dbInitialize {
-    NSString *sql = @"pragma journal_mode = wal; pragma synchronous = normal; create table if not exists manifest (key text, filename text, size integer, inline_data blob, modification_time integer, last_access_time integer, extended_data blob, primary key(key)); create index if not exists last_access_time_idx on manifest(last_access_time);";
+    NSString *sql = [NSString stringWithFormat:@"pragma journal_mode = wal; pragma synchronous = normal; create table if not exists manifest (key text, filename text, size integer, inline_data blob, modification_time integer, last_access_time integer, extended_data blob, primary key(key))%@; create index if not exists last_access_time_idx on manifest(last_access_time);", (SQLITE_VERSION_NUMBER >= 3008002) ? @" without rowid" : @""];
     return [self _dbExecute:sql];
 }
 
