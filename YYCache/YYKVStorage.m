@@ -169,7 +169,10 @@ static UIApplication *_YYSharedApplication() {
 - (void)_dbCheckpoint {
     if (![self _dbCheck]) return;
     // Cause a checkpoint to occur, merge `sqlite-wal` file to `sqlite` file.
-    sqlite3_wal_checkpoint(_db, NULL);
+    int result = sqlite3_wal_checkpoint(_db, NULL);
+    if (result != SQLITE_OK && _errorLogsEnabled) {
+        NSLog(@"%s line:%d sqlite WAL checkpoint error (%d)", __FUNCTION__, __LINE__, result);
+    }
 }
 
 - (BOOL)_dbExecute:(NSString *)sql {
