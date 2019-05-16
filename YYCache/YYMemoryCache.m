@@ -125,8 +125,14 @@ static inline dispatch_queue_t YYMemoryCacheGetReleaseQueue() {
     _totalCount--;
     if (node->_next) node->_next->_prev = node->_prev;
     if (node->_prev) node->_prev->_next = node->_next;
-    if (_head == node) _head = node->_next;
-    if (_tail == node) _tail = node->_prev;
+    if (_head == node) {
+        _head = node->_next;
+        _head->_prev = nil; //need reset
+    }
+    if (_tail == node) {
+        _tail = node->_prev;
+        _tail->_next = nil; //need reset
+    }
 }
 
 - (_YYLinkedMapNode *)removeTailNode {
