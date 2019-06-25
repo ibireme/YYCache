@@ -330,7 +330,7 @@ static UIApplication *_YYSharedApplication() {
 }
 
 - (BOOL)_dbDeleteItemsWithTimeEarlierThan:(int)time {
-    NSString *sql = @"delete from manifest where last_access_time < ?1;";
+    NSString *sql = @"delete from manifest where modification_time < ?1;";
     sqlite3_stmt *stmt = [self _dbPrepareStmt:sql];
     if (!stmt) return NO;
     sqlite3_bind_int(stmt, 1, time);
@@ -516,7 +516,7 @@ static UIApplication *_YYSharedApplication() {
 }
 
 - (NSMutableArray *)_dbGetFilenamesWithTimeEarlierThan:(int)time {
-    NSString *sql = @"select filename from manifest where last_access_time < ?1 and filename is not null;";
+    NSString *sql = @"select filename from manifest where modification_time < ?1 and filename is not null;";
     sqlite3_stmt *stmt = [self _dbPrepareStmt:sql];
     if (!stmt) return nil;
     sqlite3_bind_int(stmt, 1, time);
