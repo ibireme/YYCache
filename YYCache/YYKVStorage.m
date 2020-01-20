@@ -444,8 +444,8 @@ static UIApplication *_YYSharedApplication() {
     if (result == SQLITE_ROW) {
         const void *inline_data = sqlite3_column_blob(stmt, 0);
         int inline_data_bytes = sqlite3_column_bytes(stmt, 0);
-        if (!inline_data || inline_data_bytes <= 0) return nil;
         sqlite3_reset(stmt);
+        if (!inline_data || inline_data_bytes <= 0) return nil;
         return [NSData dataWithBytes:inline_data length:inline_data_bytes];
     } else {
         if (result != SQLITE_DONE) {
