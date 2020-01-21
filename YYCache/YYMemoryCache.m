@@ -402,8 +402,9 @@ static inline dispatch_queue_t YYMemoryCacheGetReleaseQueue() {
         node->_time = CACurrentMediaTime();
         [_lru bringNodeToHead:node];
     }
+    id result = node ? node->_value : nil;
     pthread_mutex_unlock(&_lock);
-    return node ? node->_value : nil;
+    return result;
 }
 
 - (void)setObject:(id)object forKey:(id)key {
