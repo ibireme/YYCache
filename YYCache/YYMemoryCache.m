@@ -176,6 +176,7 @@ static inline dispatch_queue_t YYMemoryCacheGetReleaseQueue() {
     pthread_mutex_t _lock;
     _YYLinkedMap *_lru;
     dispatch_queue_t _queue;
+    CFRunLoopSourceRef _noSpinSource;
 }
 
 - (void)_trimRecursively {
@@ -208,6 +209,8 @@ static inline dispatch_queue_t YYMemoryCacheGetReleaseQueue() {
     pthread_mutex_unlock(&_lock);
     if (finish) return;
     
+    CFRunLoopAddSource(CFRunLoopGetCurrent(), _noSpinSource, kCFRunLoopDefaultMode);
+
     NSMutableArray *holder = [NSMutableArray new];
     while (!finish) {
         if (pthread_mutex_trylock(&_lock) == 0) {
@@ -219,7 +222,8 @@ static inline dispatch_queue_t YYMemoryCacheGetReleaseQueue() {
             }
             pthread_mutex_unlock(&_lock);
         } else {
-            usleep(10 * 1000); //10 ms
+           // usleep(10 * 1000); //10 ms
+            CFRunLoopRunInMode(kCFRunLoopDefaultMode, 0.01, NO); // Give RunLoop 10ms to handle input sources.
         }
     }
     if (holder.count) {
@@ -241,7 +245,9 @@ static inline dispatch_queue_t YYMemoryCacheGetReleaseQueue() {
     }
     pthread_mutex_unlock(&_lock);
     if (finish) return;
-    
+
+    CFRunLoopAddSource(CFRunLoopGetCurrent(), _noSpinSource, kCFRunLoopDefaultMode);
+
     NSMutableArray *holder = [NSMutableArray new];
     while (!finish) {
         if (pthread_mutex_trylock(&_lock) == 0) {
@@ -253,7 +259,8 @@ static inline dispatch_queue_t YYMemoryCacheGetReleaseQueue() {
             }
             pthread_mutex_unlock(&_lock);
         } else {
-            usleep(10 * 1000); //10 ms
+//            usleep(10 * 1000); //10 ms
+            CFRunLoopRunInMode(kCFRunLoopDefaultMode, 0.01, NO); // Give RunLoop 10ms to handle input sources.
         }
     }
     if (holder.count) {
@@ -277,6 +284,8 @@ static inline dispatch_queue_t YYMemoryCacheGetReleaseQueue() {
     pthread_mutex_unlock(&_lock);
     if (finish) return;
     
+    CFRunLoopAddSource(CFRunLoopGetCurrent(), _noSpinSource, kCFRunLoopDefaultMode);
+
     NSMutableArray *holder = [NSMutableArray new];
     while (!finish) {
         if (pthread_mutex_trylock(&_lock) == 0) {
@@ -288,7 +297,8 @@ static inline dispatch_queue_t YYMemoryCacheGetReleaseQueue() {
             }
             pthread_mutex_unlock(&_lock);
         } else {
-            usleep(10 * 1000); //10 ms
+            //usleep(10 * 1000); //10 ms
+            CFRunLoopRunInMode(kCFRunLoopDefaultMode, 0.01, NO); // Give RunLoop 10ms to handle input sources.
         }
     }
     if (holder.count) {
@@ -333,6 +343,9 @@ static inline dispatch_queue_t YYMemoryCacheGetReleaseQueue() {
     _shouldRemoveAllObjectsOnMemoryWarning = YES;
     _shouldRemoveAllObjectsWhenEnteringBackground = YES;
     
+    CFRunLoopSourceContext noSpinCtx = {0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL};
+        _noSpinSource = CFRunLoopSourceCreate(NULL, 0, &noSpinCtx);
+    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(_appDidReceiveMemoryWarningNotification) name:UIApplicationDidReceiveMemoryWarningNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(_appDidEnterBackgroundNotification) name:UIApplicationDidEnterBackgroundNotification object:nil];
     
@@ -345,6 +358,7 @@ static inline dispatch_queue_t YYMemoryCacheGetReleaseQueue() {
     [[NSNotificationCenter defaultCenter] removeObserver:self name:UIApplicationDidEnterBackgroundNotification object:nil];
     [_lru removeAll];
     pthread_mutex_destroy(&_lock);
+    CFRelease(_noSpinSource);
 }
 
 - (NSUInteger)totalCount {
@@ -403,8 +417,9 @@ static inline dispatch_queue_t YYMemoryCacheGetReleaseQueue() {
         node->_time = CACurrentMediaTime();
         [_lru bringNodeToHead:node];
     }
+    id value = node ? node->_value : nil;
     pthread_mutex_unlock(&_lock);
-    return node ? node->_value : nil;
+    return value;
 }
 
 - (void)setObject:(id)object forKey:(id)key {
