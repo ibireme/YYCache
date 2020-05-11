@@ -328,6 +328,7 @@ static inline dispatch_queue_t YYMemoryCacheGetReleaseQueue() {
     _countLimit = NSUIntegerMax;
     _costLimit = NSUIntegerMax;
     _ageLimit = DBL_MAX;
+    _updateAgeLimitWhenGet = YES;
     _autoTrimInterval = 5.0;
     _shouldRemoveAllObjectsOnMemoryWarning = YES;
     _shouldRemoveAllObjectsWhenEnteringBackground = YES;
@@ -398,7 +399,7 @@ static inline dispatch_queue_t YYMemoryCacheGetReleaseQueue() {
     if (!key) return nil;
     pthread_mutex_lock(&_lock);
     _YYLinkedMapNode *node = CFDictionaryGetValue(_lru->_dic, (__bridge const void *)(key));
-    if (node) {
+    if (updateAgeLimitWhenGet && node) {
         node->_time = CACurrentMediaTime();
         [_lru bringNodeToHead:node];
     }

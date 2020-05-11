@@ -78,6 +78,12 @@ NS_ASSUME_NONNULL_BEGIN
 @property NSTimeInterval ageLimit;
 
 /**
+ If `YES`, the cache will remove all objects when the app receives a memory warning.
+ The default value is `YES`.
+ */
+@property BOOL updateAgeLimitWhenGet;
+
+/**
  The auto trim check time interval in seconds. Default is 5.0.
  
  @discussion The cache holds an internal timer to check whether the cache reaches 
