@@ -399,7 +399,7 @@ static inline dispatch_queue_t YYMemoryCacheGetReleaseQueue() {
     if (!key) return nil;
     pthread_mutex_lock(&_lock);
     _YYLinkedMapNode *node = CFDictionaryGetValue(_lru->_dic, (__bridge const void *)(key));
-    if (updateAgeLimitWhenGet && node) {
+    if (_updateAgeLimitWhenGet && node) {
         node->_time = CACurrentMediaTime();
         [_lru bringNodeToHead:node];
     }

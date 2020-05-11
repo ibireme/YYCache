@@ -78,7 +78,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property NSTimeInterval ageLimit;
 
 /**
- If `YES`, the cache will remove all objects when the app receives a memory warning.
+ If `YES`, can update agelimit when getobject:
  The default value is `YES`.
  */
 @property BOOL updateAgeLimitWhenGet;
