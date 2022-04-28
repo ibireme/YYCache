@@ -436,7 +436,7 @@ static inline dispatch_queue_t YYMemoryCacheGetReleaseQueue() {
     }
     if (_lru->_totalCost > _costLimit) {
         dispatch_async(_queue, ^{
-            [self trimToCost:_costLimit];
+            [self trimToCost:self->_costLimit];
         });
     }
     if (_lru->_totalCount > _countLimit) {
